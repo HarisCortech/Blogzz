@@ -1,0 +1,6 @@
+.env
+users/__pycache__
+posts/__pycache__
+config/__pycache__
+.vscode
+.venv
