@@ -10,13 +10,13 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ("id", "username", "email", "password")
-        extra_kwargs = {"password": {"write_only": True}} 
+        extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
         return CustomUser.objects.create_user(**validated_data)
 
 class UserLoginSerializer(serializers.Serializer):
-    
+
     """
     Serializer class to serialize login requests of a user.
     """
@@ -33,7 +33,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     """
     Serializer class to serialize CustomUser model.
     """
-    
+
     class Meta:
         model = CustomUser
         fields = ('id','email','password')
@@ -50,7 +50,7 @@ class ProfileAvatarSerializer(serializers.ModelSerializer):
     """
     Serializer class to serialize the avatar
     """
-    
+
     class Meta:
         model = Profile
         fields = ("avatar",)

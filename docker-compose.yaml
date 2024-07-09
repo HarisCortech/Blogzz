@@ -1,0 +1,27 @@
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "8000:8000" # Host:Container, port mapping
+    command: sh ./start.sh
+    volumes:
+      - .:/app # if there is any current directory . means current dir, then it should reflect in our app dir which is inside our docker container, and if the change happens the change should reflect in our container
+    env_file:
+      - .env
+    depends_on: # this is used to make sure that the db is up and running before the web service starts
+      - postgres_db # this is the name of the service
+
+  postgres_db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

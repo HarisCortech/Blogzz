@@ -70,18 +70,20 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-DB = os.environ["POSTGRES_DB"]
-USER = os.environ["POSTGRES_USER"]
-PASS = os.environ["POSTGRES_PASS"]
+DB_NAME = os.environ["POSTGRES_DB"]
+DB_USER = os.environ["POSTGRES_USER"]
+DB_PASS = os.environ["POSTGRES_PASS"]
+DB_PORT = os.environ["POSTGRES_PORT"]
+DB_HOST = os.environ["POSTGRES_HOST"]
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blogzz',
-        'USER': 'postgres',
-        'PASSWORD': 'haris70',
-        'HOST': 'db',
-        'PORT': '5432'
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT
     }
 }
 
